@@ -19,6 +19,7 @@
 		BD31F8821748B1A0008564FB /* NGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD31F8811748B1A0008564FB /* NGViewController.m */; };
 		BD31F8851748B1A0008564FB /* NGViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD31F8831748B1A0008564FB /* NGViewController_iPhone.xib */; };
 		BD31F8881748B1A0008564FB /* NGViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD31F8861748B1A0008564FB /* NGViewController_iPad.xib */; };
+		BD31F8901748B3FD008564FB /* NGLayoutSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BD31F88F1748B3FD008564FB /* NGLayoutSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,10 @@
 		BD31F8811748B1A0008564FB /* NGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NGViewController.m; sourceTree = "<group>"; };
 		BD31F8841748B1A0008564FB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NGViewController_iPhone.xib; sourceTree = "<group>"; };
 		BD31F8871748B1A0008564FB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NGViewController_iPad.xib; sourceTree = "<group>"; };
+		BD31F88E1748B3FD008564FB /* NGLayoutSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGLayoutSet.h; sourceTree = "<group>"; };
+		BD31F88F1748B3FD008564FB /* NGLayoutSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGLayoutSet.m; sourceTree = "<group>"; };
+		BD31F8911748BF43008564FB /* NGExceptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGExceptions.h; sourceTree = "<group>"; };
+		BD31F8921748C3EB008564FB /* NGPropertyManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGPropertyManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,10 @@
 				BD31F8831748B1A0008564FB /* NGViewController_iPhone.xib */,
 				BD31F8861748B1A0008564FB /* NGViewController_iPad.xib */,
 				BD31F86F1748B1A0008564FB /* Supporting Files */,
+				BD31F88E1748B3FD008564FB /* NGLayoutSet.h */,
+				BD31F88F1748B3FD008564FB /* NGLayoutSet.m */,
+				BD31F8911748BF43008564FB /* NGExceptions.h */,
+				BD31F8921748C3EB008564FB /* NGPropertyManager.h */,
 			);
 			path = Layman;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 				BD31F8751748B1A0008564FB /* main.m in Sources */,
 				BD31F8791748B1A0008564FB /* NGAppDelegate.m in Sources */,
 				BD31F8821748B1A0008564FB /* NGViewController.m in Sources */,
+				BD31F8901748B3FD008564FB /* NGLayoutSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
