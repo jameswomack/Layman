@@ -8,6 +8,8 @@
 
 #import "NGViewController.h"
 #import "NGLayoutSet.h"
+#import "NGAppearance.h"
+#import "NSArray+Any.h"
 
 @interface NGViewController ()
 @property (nonatomic, strong) UITextField *usernameField;
@@ -21,6 +23,13 @@
 @synthesize usernameField = _usernameField, passwordField = _passwordField, goButton = _goButton;
 NGDynamic(layouts, NGLayoutSet);
 
+
+- (void)loadView
+{
+    [super loadView];
+    self.view.backgroundColor = UIColor.whiteColor;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,36 +39,23 @@ NGDynamic(layouts, NGLayoutSet);
     [self goButton];
     [self.layouts applyToView:self.view];
     
-    NSLog(@"%@",self.view.constraints);
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (CGRect)defaultFrame
-{
-    CGRect defaultFrame = CGRectZero;
-    defaultFrame.size = CGSizeMake(self.view.frame.size.width, 20.f);
-    return defaultFrame;
+    NSLog(@"%@",self.aTextFieldIsFirstResponder?@"YES":@"NO");
 }
 
 - (UITextField *)usernameField
 {
     if (!_usernameField)
     {
-        _usernameField = [UITextField.alloc initWithFrame:self.defaultFrame];
-        _usernameField.backgroundColor = UIColor.blueColor;
+        _usernameField = UITextField.new;
+        _usernameField.borderStyle = UITextBorderStyleRoundedRect;
         _usernameField.delegate = self;
         _usernameField.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self.view addSubview:_usernameField];
         
-        [self.layouts addLayout:NGLayoutInSuperview(_usernameField, CENTER_X, LESS_OR, 0.f)];
-        [self.layouts addLayout:NGLayoutInSuperview(_usernameField, TOP, LESS_OR, 12.f)];
-        [self.layouts addLayout:NGLayoutInSuperview(_usernameField, WIDTH, EQUAL, -20.f)];
+        [self.layouts addLayout:NGLayoutInSuperview(_usernameField, AL_CENTER_X, AL_LESS_OR, CERO)];
+        [self.layouts addLayout:NGLayoutInSuperview(_usernameField, AL_TOP, AL_LESS_OR, DEFAULT_TOP_MARGIN)];
+        [self.layouts addLayout:NGLayoutInSuperview(_usernameField, AL_WIDTH, AL_EQUAL, -DEFAULT_EDGE_INSET)];
         [self.layouts applyToView:_usernameField.superview];
     }
     
@@ -70,17 +66,17 @@ NGDynamic(layouts, NGLayoutSet);
 {
     if (!_passwordField)
     {
-        _passwordField = [UITextField.alloc initWithFrame:self.defaultFrame];
-        _passwordField.backgroundColor = UIColor.redColor;
+        _passwordField = UITextField.new;
+        _passwordField.borderStyle = UITextBorderStyleRoundedRect;
         _passwordField.delegate = self;
         _passwordField.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self.view addSubview:_passwordField];
         
-        [self.layouts addLayout:NGLayoutEqual(_passwordField, self.usernameField, HEIGHT)];
-        [self.layouts addLayout:NGLayoutInSuperview(_passwordField, CENTER_X, LESS_OR, 0.f)];
-        [self.layouts addLayout:NGLayoutInSuperview(_passwordField, WIDTH, EQUAL, -20.f)];
-        [self.layouts addLayout:NGLayoutFromBottom(_passwordField, self.usernameField, 12.f)];
+        [self.layouts addLayout:NGLayoutEqual(_passwordField, self.usernameField, AL_HEIGHT)];
+        [self.layouts addLayout:NGLayoutInSuperview(_passwordField, AL_CENTER_X, AL_LESS_OR, CERO)];
+        [self.layouts addLayout:NGLayoutInSuperview(_passwordField, AL_WIDTH, AL_EQUAL, -DEFAULT_EDGE_INSET)];
+        [self.layouts addLayout:NGLayoutFromBottom(_passwordField, self.usernameField, DEFAULT_TOP_MARGIN)];
     }
     
     return _passwordField;
@@ -92,14 +88,12 @@ NGDynamic(layouts, NGLayoutSet);
     {
         _goButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_goButton setTitle:@"Go" forState:UIControlStateNormal];
-        _goButton.frame = self.defaultFrame;
         _goButton.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self.view addSubview:_goButton];
         
-        [self.layouts addLayout:NGLayoutEqual(_goButton, self.passwordField, HEIGHT)];
         [self.layouts addLayout:NGLayoutAlignRight(_goButton, self.passwordField)];
-        [self.layouts addLayout:NGLayoutFromBottom(_goButton, self.passwordField, 24.f)];
+        [self.layouts addLayout:NGLayoutFromBottom(_goButton, self.passwordField, DEFAULT_TOP_MARGIN)];
     }
     
     return _goButton;
@@ -122,6 +116,21 @@ NGDynamic(layouts, NGLayoutSet);
         assert(0);
     }
     return shouldReturn;
+}
+
+- (BOOL)aTextFieldIsFirstResponder
+{   
+    return [[@[self.usernameField, self.passwordField] any] isFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    NSLog(@"%@",self.aTextFieldIsFirstResponder?@"YES":@"NO");
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSLog(@"%@",self.aTextFieldIsFirstResponder?@"YES":@"NO");
 }
 
 @end

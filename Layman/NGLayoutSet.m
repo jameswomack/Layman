@@ -26,17 +26,17 @@ NSLayoutConstraint *NGLayoutInSuperview(UIView *view, NSLayoutAttribute attribut
 
 NSLayoutConstraint *NGLayoutEqual(UIView *view0, UIView *view1, NSLayoutAttribute attribute)
 {
-    return [NSLayoutConstraint constraintWithItem:view0 attribute:attribute relatedBy:EQUAL toItem:view1 attribute:attribute multiplier:1.f constant:0.f];
+    return [NSLayoutConstraint constraintWithItem:view0 attribute:attribute relatedBy:AL_EQUAL toItem:view1 attribute:attribute multiplier:1.f constant:0.f];
 }
 
 NSLayoutConstraint *NGLayoutFromBottom(UIView *view0, UIView *view1, CGFloat constant)
 {
-    return [NSLayoutConstraint constraintWithItem:view0 attribute:NSLayoutAttributeTop relatedBy:EQUAL toItem:view1 attribute:NSLayoutAttributeBottom multiplier:1.f constant:constant];
+    return [NSLayoutConstraint constraintWithItem:view0 attribute:NSLayoutAttributeTop relatedBy:AL_EQUAL toItem:view1 attribute:NSLayoutAttributeBottom multiplier:1.f constant:constant];
 }
 
 NSLayoutConstraint *NGLayoutAlignRight(UIView *view0, UIView *view1)
 {
-    return [NSLayoutConstraint constraintWithItem:view0 attribute:NSLayoutAttributeRight relatedBy:EQUAL toItem:view1 attribute:NSLayoutAttributeRight multiplier:1.f constant:0.f];
+    return [NSLayoutConstraint constraintWithItem:view0 attribute:NSLayoutAttributeRight relatedBy:AL_EQUAL toItem:view1 attribute:NSLayoutAttributeRight multiplier:1.f constant:0.f];
 }
 
 #pragma mark - Adding Layouts

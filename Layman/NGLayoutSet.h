@@ -12,13 +12,13 @@
 
 typedef BOOL (^NGComparisonBlock)(id obj, BOOL *stop);
 
-#define CENTER_X NSLayoutAttributeCenterX
-#define TOP NSLayoutAttributeTop
-#define WIDTH NSLayoutAttributeWidth
-#define HEIGHT NSLayoutAttributeHeight
-#define LESS_OR NSLayoutRelationLessThanOrEqual
+#define AL_CENTER_X NSLayoutAttributeCenterX
+#define AL_TOP NSLayoutAttributeTop
+#define AL_WIDTH NSLayoutAttributeWidth
+#define AL_HEIGHT NSLayoutAttributeHeight
+#define AL_LESS_OR NSLayoutRelationLessThanOrEqual
 #define GREATER_OR NSLayoutRelationGreaterThanOrEqual
-#define EQUAL NSLayoutRelationEqual
+#define AL_EQUAL NSLayoutRelationEqual
 
 extern NSLayoutConstraint *NGLayoutInSuperview(UIView *view, NSLayoutAttribute attribute, NSLayoutRelation relation, CGFloat constant);
 extern NSLayoutConstraint *NGLayoutEqual(UIView *view0, UIView *view1, NSLayoutAttribute attribute);
